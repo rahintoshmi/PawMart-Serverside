@@ -139,7 +139,7 @@ async function run() {
 
     app.get("/api/orders", async (req, res) => {
       try {
-        // Get the email from the query parameter
+       
         const { email } = req.query;
 
         if (!email) {
