@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb"); //mongodb package
@@ -8,16 +9,11 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 //mongodb connection
-const uri ="mongodb+srv://pawmartuser:irfRov3XrwKrTH7D@cluster0.8meqpjp.mongodb.net/?appName=Cluster0";
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+// MongoDB connection
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
+  serverApi: { version: ServerApiVersion.v1, strict: true, deprecationErrors: true },
 });
-
 
 app.get("/", (req, res) => {
   res.send("Hello World!!!!!");
@@ -25,13 +21,12 @@ app.get("/", (req, res) => {
 
 async function run() {
   try {
- 
     await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
 
-    // Get database and collection 
+    // Get database and collection
     const db = client.db("pawmart");
     const listingsCollection = db.collection("listings");
     // Get latest 6 listings
@@ -39,7 +34,7 @@ async function run() {
       try {
         const listings = await listingsCollection
           .find({})
-          .sort({ _id: -1 }) 
+          .sort({ _id: -1 })
           .limit(6)
           .toArray();
 
@@ -139,7 +134,6 @@ async function run() {
 
     app.get("/api/orders", async (req, res) => {
       try {
-       
         const { email } = req.query;
 
         if (!email) {
@@ -148,11 +142,10 @@ async function run() {
             .send({ message: "Email query parameter is required" });
         }
 
-        
         const query = { userEmail: email };
         const userOrders = await ordersCollection
           .find(query)
-          .sort({ date: -1 }) 
+          .sort({ date: -1 })
           .toArray();
 
         res.send(userOrders);
@@ -168,12 +161,10 @@ async function run() {
         const id = req.params.id;
         const updatedData = req.body;
 
-        
         if (!ObjectId.isValid(id)) {
           return res.status(400).send({ message: "Invalid listing ID" });
         }
 
-        
         delete updatedData._id;
 
         const result = await listingsCollection.updateOne(
@@ -194,8 +185,6 @@ async function run() {
         res.status(500).send({ message: "Failed to update listing" });
       }
     });
-
-    
 
     // Delete listing
     app.delete("/api/listings/:id", async (req, res) => {
@@ -240,7 +229,7 @@ async function run() {
   } catch (err) {
     console.error("Database connection failed:", err);
     await client.close();
-    process.exit(1); 
+    process.exit(1);
   }
 }
 
