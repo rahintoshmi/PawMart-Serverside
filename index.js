@@ -5,8 +5,19 @@ const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb"); //mongod
 const app = express();
 const port = process.env.PORT || 3000;
 
+
+
+
+const corsOptions = {
+  origin: "*", // Allow all origins (safe for public API)
+  credentials: false,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+
 //middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 //mongodb connection
 // MongoDB connection
