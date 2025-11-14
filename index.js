@@ -168,12 +168,12 @@ async function run() {
         const id = req.params.id;
         const updatedData = req.body;
 
-        // Validate ObjectId format
+        
         if (!ObjectId.isValid(id)) {
           return res.status(400).send({ message: "Invalid listing ID" });
         }
 
-        // Remove _id from updateData if it exists
+        
         delete updatedData._id;
 
         const result = await listingsCollection.updateOne(
@@ -195,7 +195,7 @@ async function run() {
       }
     });
 
-    // ============ DELETE ROUTES ============
+    
 
     // Delete listing
     app.delete("/api/listings/:id", async (req, res) => {
