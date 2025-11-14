@@ -39,7 +39,7 @@ async function run() {
       try {
         const listings = await listingsCollection
           .find({})
-          .sort({ _id: -1 }) // newest first
+          .sort({ _id: -1 }) 
           .limit(6)
           .toArray();
 
