@@ -31,7 +31,7 @@ async function run() {
       "Pinged your deployment. You successfully connected to MongoDB!"
     );
 
-    // Get database and collection references
+    // Get database and collection 
     const db = client.db("pawmart");
     const listingsCollection = db.collection("listings");
     // Get latest 6 listings
