@@ -148,11 +148,11 @@ async function run() {
             .send({ message: "Email query parameter is required" });
         }
 
-        // Find all orders that match the userEmail field
+        
         const query = { userEmail: email };
         const userOrders = await ordersCollection
           .find(query)
-          .sort({ date: -1 }) // Optional: sort newest first
+          .sort({ date: -1 }) 
           .toArray();
 
         res.send(userOrders);
