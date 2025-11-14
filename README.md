@@ -18,107 +18,34 @@ With a clean UI, powerful search & filter features, protected user dashboard and
 
 ## 🚀 **Features**
 
-### 🔐 **Authentication**
+### 1️⃣ Authentication
+* **Firebase Login**: Email/Password + Google Sign-in  
+* **Custom Validation**: Password must have at least 1 uppercase, 1 lowercase, minimum 6 characters  
+* **Protected Routes**: Add Listing, My Listings, My Orders  
+* **Persistent Login**: Users remain logged in even on page reload  
 
-* Firebase authentication (Email/Password + Google Sign-in)
-* Custom password validation rules
-* Protected routes for:
+### 2️⃣ Pet Listings & Adoption
+* **Add / Update / Delete Listings**: Manage pets or products  
+* **Home Page Display**: Latest 6 listings with images, category, price, location  
+* **Filtering & Search**: Filter by category or search by name  
+* **Listing Details**: Full details with “Adopt / Order Now” button  
 
-  * Add Listing
-  * My Listings
-  * My Orders
-* Logged-in users stay authenticated even on page reload
+### 3️⃣ Orders & Purchases
+* **Place Orders**: Auto-fill buyer info from logged-in user  
+* **My Orders Page**: Track orders placed by the user  
+* **Order Report**: Download PDF of all orders (jsPDF + AutoTable)  
 
----
+### 4️⃣ Theme & Responsiveness
+* **Dark/Light Mode Toggle**: Using TailwindCSS  
+* **Fully Responsive Design**: Works on mobile, tablet, and desktop  
+* **Navbar & Footer**: Visible on all pages except 404  
 
-### 🏠 **Home Page**
-
-* Stunning hero banner with taglines
-* 4 main category cards:
-
-  * 🐶 Pets (Adoption)
-  * 🍖 Pet Food
-  * 🎒 Accessories
-  * 🧴 Pet Care Products
-* Recent 6 listings from MongoDB
-* 2 meaningful extra sections:
-
-  * “Why Adopt from PawMart?”
-  * “Meet Our Pet Heroes”
-
----
-
-### 🐕 **Pets & Supplies Page**
-
-* View all listings in a clean 3-column layout
-* Search products by name
-* Filter by category
-* Detailed listing cards with See Details button
-
----
-
-### 📄 **Listing Details (Private Route)**
-
-Shows complete pet/product info:
-
-* Full details (Name, Category, Price, Description, Owner Email, etc.)
-* **Adopt / Order Now** button
-* Order Modal Form:
-
-  * Auto-filled fields (buyer name, email, product info)
-  * Quantity auto-set to 1 for pets
-  * Saves data to MongoDB
-  * Success toast after order
-
----
-
-### ➕ **Add Listing Page (Private Route)**
-
-Pet owners can add new items with fields:
-
-* Name
-* Category dropdown
-* Price (auto 0 for pets)
-* Location
-* Description
-* Image URL
-* Date
-* Owner Email (readonly)
-
----
-
-### 📋 **My Listings (Private)**
-
-* All listings created by logged-in user
-* Displayed in table format
-* Update (edit modal/route)
-* Delete (with confirmation)
-* Fully dynamic filtering by user email
-
----
-
-### 🛍️ **My Orders (Private)**
-
-* All orders made by logged-in user
-* Table format with full details
-* **Download Report (PDF)** button
-  → Generates PDF using jsPDF + AutoTable
-
----
-
-## 🎁 **Extra Features**
-
-* 🔄 Live dynamic page titles
-* 🌗 Dark / Light mode toggle
-* ⚠️ 404 Custom Page (without Navbar & Footer)
-* 🔄 Loading Spinner for API
-* 🌐 Fully responsive layout
-* ⚡ Toast notifications for all CRUD operations
-* ⚙️ Framer Motion animations
-* 🔍 Search functionality
-* PDF Report Generator
-
----
+### 5️⃣ UI / UX Enhancements
+* **Carousel / Banner**: Pet images with taglines  
+* **Category Cards**: Pets, Food, Accessories, Care Products  
+* **Awareness Sections**: “Why Adopt from PawMart?” & “Meet Our Pet Heroes”  
+* **Loading Spinners**: Smooth transitions during API calls  
+* **Success/Error Toasts**: All CRUD operations using react-hot-toast  
 
 ## 🛠️ **Tech Stack**
 
